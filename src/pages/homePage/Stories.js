@@ -5,27 +5,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-const stories = [
-  {
-    imageUrl:
-      "https://veja.abril.com.br/wp-content/uploads/2022/06/GettyImages-1395062612.jpg.jpg?quality=70&strip=info&resize=850,567",
-    userName: "elton musk",
-  },
-  {
-    imageUrl:
-      "https://classic.exame.com/wp-content/uploads/2020/08/gettyimages-625137408-e1490022536452.jpg?quality=70&strip=info&w=1024",
-    userName: "bilu gayto",
-  },
-  {
-    imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Steve_Jobs_Headshot_2010-CROP2.jpg/640px-Steve_Jobs_Headshot_2010-CROP2.jpg",
-    userName: "Steve works",
-  },
-];
-function Stories() {
+
+function Stories({storiesData = []}) {
   return (
-    <Card sx={{ maxWidth: 500, display: "flex" }}>
-      {stories.map(({userName='',imageUrl=''}) => {
+    <Card sx={{ maxWidth: 500, display: "flex",width:500 }}>
+      {storiesData.map(({userName='',imageUrl=''}) => {
        return( <div>
           <CardActionArea>
             <CardMedia
