@@ -1,11 +1,10 @@
-
+import Stories from "./Stories";
 
 function HomePage() {
   return (
     <div>
-        <p>
-      homePage
-        </p>
+      <p>homePage</p>
+      <Stories></Stories>
     </div>
   );
 }
