@@ -25,9 +25,9 @@ function Stories({storiesData = []}) {
               component="img"
               image={imageUrl}
             />
-            <CardContent>
-              <Typography gutterBottom variant="h7" component="div">
-               {userName}
+            <CardContent style={{textAlign:'center'}}>
+              <Typography  gutterBottom variant="h7" component="div">
+               {userName.length>9?userName.slice(0, 7)+'...':userName}
               </Typography>
             </CardContent>
           </CardActionArea>
