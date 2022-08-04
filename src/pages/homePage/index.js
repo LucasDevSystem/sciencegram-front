@@ -67,6 +67,7 @@ function HomePage() {
           marginRight: "auto",
           display: "flex",
           justifyContent: "center",
+          marginTop: 5,
         }}
       >
         <Stories storiesData={storiesData}></Stories>
