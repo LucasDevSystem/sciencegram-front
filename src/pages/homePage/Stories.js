@@ -18,9 +18,9 @@ function Stories({storiesData = []}) {
                 marginTop: 5,
                 borderRadius: "50%",
                 borderColor: "green",
-                width: "100px",
+                width: "80px",
                 borderStyle: "solid",
-                height: "100px",
+                height: "80px",
               }}
               component="img"
               image={imageUrl}

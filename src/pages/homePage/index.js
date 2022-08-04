@@ -9,7 +9,7 @@ const storiesData = [
   {
     imageUrl:
       "https://classic.exame.com/wp-content/uploads/2020/08/gettyimages-625137408-e1490022536452.jpg?quality=70&strip=info&w=1024",
-    userName: "bilu gayto",
+    userName: "bilu gato",
   },
   {
     imageUrl:
@@ -27,7 +27,11 @@ const feedData = [
     ],
     description: "roubaram nossos bitcoins",
     likes: 0,
-    comments: [{userName:'jhon saints', comment:'i thinks this not solve my prob'},{userName:'elton muskison', comment:'o man thks'}, {userName:'jhony', comment:'love u'}],
+    comments: [
+      { userName: "jhon saints", comment: "i thinks this not solve my prob" },
+      { userName: "elton muskison", comment: "o man thks" },
+      { userName: "jhony", comment: "love u" },
+    ],
     createdAt: "10/05/2023",
   },
   {
@@ -49,7 +53,7 @@ const feedData = [
     ],
     description: "roubaram nossos bitcoins",
     likes: 0,
-    isLiked:true,
+    isLiked: true,
     comments: [],
     createdAt: "10/05/2023",
   },
