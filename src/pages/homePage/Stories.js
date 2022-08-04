@@ -9,8 +9,8 @@ import { CardActionArea } from "@mui/material";
 function Stories({storiesData = []}) {
   return (
     <Card sx={{ maxWidth: 500, display: "flex",width:500 }}>
-      {storiesData.map(({userName='',imageUrl=''}) => {
-       return( <div>
+      {storiesData.map(({userName='',imageUrl=''},index) => {
+       return( <div key={index}>
           <CardActionArea>
             <CardMedia
               style={{

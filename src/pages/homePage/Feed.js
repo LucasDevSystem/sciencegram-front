@@ -11,19 +11,19 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import {  Input, TextField } from "@mui/material";
+import { Input, TextField } from "@mui/material";
 
 export default function Feed({ feedData = [] }) {
   return (
     <div>
-      {feedData.map((postData) => {
-        return <PostCard postData={postData} />;
+      {feedData.map((postData, index) => {
+        return <div key={index}><PostCard  postData={postData} /></div>;
       })}
     </div>
   );
 }
 
-const PostCard = ({ postData }) => {
+const PostCard = ({ postData, key }) => {
   const [expanded, setExpanded] = React.useState(false);
   const { userName, userImageUrl, images, description, comments, createdAt } =
     postData;
@@ -62,24 +62,34 @@ const PostCard = ({ postData }) => {
         </IconButton>
       </CardActions>
       <CardContent>
-        <Typography variant='h7' >
-          {description}
-        </Typography>
+        <Typography variant="h7">{description}</Typography>
       </CardContent>
 
-  
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          {comments.map(({comment,userName}) => {
+          {comments.map(({ comment, userName },index) => {
             return (
-            <div>
-            <Typography  style={{fontSize:14 , float:"left" , fontWeight:'bold'}} >{userName+': '}</Typography> 
-            <Typography  color="text.secondary" style={{fontSize:14}} paragraph>{comment}</Typography>
-            </div>)
+              <div key={index}>
+                <Typography
+                  style={{ fontSize: 14, float: "left", fontWeight: "bold" }}
+                >
+                  {userName + ": "}
+                </Typography>
+                <Typography
+                  color="text.secondary"
+                  style={{ fontSize: 14 }}
+                  paragraph
+                >
+                  {comment}
+                </Typography>
+              </div>
+            );
           })}
         </CardContent>
       </Collapse>
-      <p onClick={(e) => setExpanded(!expanded)}>{expanded?'hide comments':'show comments'}</p>
+      <p onClick={(e) => setExpanded(!expanded)}>
+        {expanded ? "hide comments" : "show comments"}
+      </p>
     </Card>
   );
 };
