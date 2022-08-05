@@ -6,15 +6,35 @@ import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { Avatar, CardHeader, IconButton } from "@mui/material";
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import StopIcon from '@mui/icons-material/Stop';
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import StopIcon from "@mui/icons-material/Stop";
 document.body.style = "background:  #35425C;";
-const stories={
-    userName:'aa',
-    imagesUrl:[],
-}
+const stories = {
+  userName: "musk",
+  userImageUrl:
+    "https://assets.reedpopcdn.com/scene-Iron-Man.webp/BROK/thumbnail/1600x900/format/jpg/quality/80/scene-Iron-Man.webp",
+  storiesImagesUrl: [
+    "https://assets.reedpopcdn.com/scene-Iron-Man.webp/BROK/thumbnail/1600x900/format/jpg/quality/80/scene-Iron-Man.webp",
+    "https://classic.exame.com/wp-content/uploads/2021/12/homem-aranha-3-1.jpg?quality=70&strip=info&w=1024",
+  ],
+};
 export default function StoriesPage() {
-  const [isStoped,setIsStoped] = React.useState(false);
+  const [isStoped, setIsStoped] = React.useState(false);
+  const [currentImgIndex, setCurrentImgIndex] = React.useState(0);
+  const { userName, userImageUrl, storiesImagesUrl } = stories;
+
+  const handleNext = () => {
+    if (currentImgIndex === storiesImagesUrl.length) {
+      return;
+    }
+    setCurrentImgIndex(currentImgIndex + 1);
+  };
+  const handleBack = () => {
+    if (currentImgIndex === 0) {
+      return;
+    }
+    setCurrentImgIndex(currentImgIndex - 1);
+  };
   return (
     <div
       style={{
@@ -29,38 +49,39 @@ export default function StoriesPage() {
           style={{ backgroundColor: "#465678" }}
           avatar={
             <Avatar
-              src={
-                "https://assets.reedpopcdn.com/scene-Iron-Man.webp/BROK/thumbnail/1600x900/format/jpg/quality/80/scene-Iron-Man.webp"
-              }
+              src={userImageUrl}
               //  sx={{ bgcolor:  "#465678" }}
               aria-label="recipe"
             ></Avatar>
           }
           action={
-            <IconButton onClick={()=>setIsStoped(!isStoped)} aria-label="settings">
-             {isStoped? <PlayArrowIcon/>:<StopIcon></StopIcon>}
+            <IconButton
+              onClick={() => setIsStoped(!isStoped)}
+              aria-label="settings"
+            >
+              {isStoped ? <PlayArrowIcon /> : <StopIcon></StopIcon>}
             </IconButton>
           }
-          title={"musk"}
+          title={userName}
           //subheader={createdAt}
         />
 
         <MobileStepper
-          style={{ backgroundColor: "#465678",height:10 }}
-          steps={5}
+          style={{ backgroundColor: "#465678", height: 10 }}
+          steps={storiesImagesUrl.length}
           position="static"
-          activeStep={1}
+          activeStep={currentImgIndex}
           nextButton={
             <Button
               size="small"
-              // onClick={handleNext}
+              onClick={handleNext}
               ///disabled={activeStep === maxSteps - 1}
             >
               <KeyboardArrowRight />
             </Button>
           }
           backButton={
-            <Button size="small">
+            <Button onClick={handleBack} size="small">
               <KeyboardArrowLeft />
             </Button>
           }
@@ -68,9 +89,7 @@ export default function StoriesPage() {
         <CardMedia
           component="img"
           height="600"
-          image={
-            "https://assets.reedpopcdn.com/scene-Iron-Man.webp/BROK/thumbnail/1600x900/format/jpg/quality/80/scene-Iron-Man.webp"
-          }
+          image={storiesImagesUrl[currentImgIndex]}
           alt="Paella dish"
         />
       </Card>
