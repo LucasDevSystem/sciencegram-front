@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import HomePage from './pages/homePage';
-import NavBar from './components/NavBar';
-import StoriesPage from './pages/stories';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import HomePage from "./pages/homePage";
+import NavBar from "./components/NavBar";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-  <StoriesPage></StoriesPage>
+    <NavBar></NavBar>
+    <HomePage></HomePage>
   </React.StrictMode>
 );
 
