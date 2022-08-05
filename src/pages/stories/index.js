@@ -4,18 +4,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Header from "./Header";
 
 document.body.style = "background:  #35425C;";
-const stories = {
-  userName: "musk",
-  userImageUrl:
-    "https://assets.reedpopcdn.com/scene-Iron-Man.webp/BROK/thumbnail/1600x900/format/jpg/quality/80/scene-Iron-Man.webp",
-  storiesImagesUrl: [
-    "https://assets.reedpopcdn.com/scene-Iron-Man.webp/BROK/thumbnail/1600x900/format/jpg/quality/80/scene-Iron-Man.webp",
-    "https://classic.exame.com/wp-content/uploads/2021/12/homem-aranha-3-1.jpg?quality=70&strip=info&w=1024",
-    "https://assets.reedpopcdn.com/scene-Iron-Man.webp/BROK/thumbnail/1600x900/format/jpg/quality/80/scene-Iron-Man.webp",
-    "https://classic.exame.com/wp-content/uploads/2021/12/homem-aranha-3-1.jpg?quality=70&strip=info&w=1024",
-  ],
-};
-export default function StoriesPage() {
+
+export default function StoriesPage({stories}) {
   const [currentImgIndex, setCurrentImgIndex] = React.useState(0);
   const { storiesImagesUrl } = stories;
 
