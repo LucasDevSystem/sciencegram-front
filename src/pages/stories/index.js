@@ -2,12 +2,16 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Header from "./Header";
+import { useParams } from "react-router-dom";
 
-document.body.style = "background:  #35425C;";
+//document.body.style = "background:  #35425C;";
 
-export default function StoriesPage({stories}) {
+export default function StoriesPage(props) {
   const [currentImgIndex, setCurrentImgIndex] = React.useState(0);
-  const { storiesImagesUrl } = stories;
+  const stories ={};
+  const { userName } = useParams();
+
+  const { storiesImagesUrl } = props;
 
   const handleNext = () => {
     if (currentImgIndex + 1 === storiesImagesUrl.length) {
