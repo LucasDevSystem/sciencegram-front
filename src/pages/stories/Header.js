@@ -10,11 +10,17 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import StopIcon from "@mui/icons-material/Stop";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
+import CloseIcon from "@mui/icons-material/Close";
+import { Link } from "react-router-dom";
 
 const Header = ({ headerData, handleBack, handleNext, currImgIndex }) => {
   const [isStoped, setIsStoped] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
-  const { userName, userImageUrl, storiesImagesUrl } = headerData;
+  const {
+    userName = "",
+    userImageUrl = "",
+    storiesImagesUrl = [],
+  } = headerData;
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -47,15 +53,20 @@ const Header = ({ headerData, handleBack, handleNext, currImgIndex }) => {
           ></Avatar>
         }
         action={
-          <IconButton
-            onClick={() => setIsStoped(!isStoped)}
-            aria-label="settings"
-          >
-            {isStoped ? <PlayArrowIcon /> : <StopIcon></StopIcon>}
-          </IconButton>
+          <div>
+            <IconButton
+              onClick={() => setIsStoped(!isStoped)}
+              aria-label="Play"
+            >
+              {isStoped ? <PlayArrowIcon /> : <StopIcon></StopIcon>}
+            </IconButton>
+            <IconButton component={Link} to={"/"}>
+              <CloseIcon></CloseIcon>
+            </IconButton>
+          </div>
         }
         title={userName}
-        //subheader={createdAt}
+        //subheader={}
       />
 
       <MobileStepper
@@ -67,7 +78,7 @@ const Header = ({ headerData, handleBack, handleNext, currImgIndex }) => {
           <Button
             size="small"
             onClick={handleNext}
-            ///disabled={activeStep === maxSteps - 1}
+            ///disabled={}
           >
             <KeyboardArrowRight />
           </Button>

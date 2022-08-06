@@ -4,17 +4,17 @@ const storiesData = [
   {
     imageUrl:
       "https://veja.abril.com.br/wp-content/uploads/2022/06/GettyImages-1395062612.jpg.jpg?quality=70&strip=info&resize=850,567",
-    userName: "elton musk",
+    userName: "musk",
   },
   {
     imageUrl:
       "https://classic.exame.com/wp-content/uploads/2020/08/gettyimages-625137408-e1490022536452.jpg?quality=70&strip=info&w=1024",
-    userName: "bilu gato",
+    userName: "bill",
   },
   {
     imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Steve_Jobs_Headshot_2010-CROP2.jpg/640px-Steve_Jobs_Headshot_2010-CROP2.jpg",
-    userName: "Steve works",
+    userName: "steve",
   },
 ];
 const feedData = [
