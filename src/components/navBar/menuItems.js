@@ -10,15 +10,16 @@ const ICON_SIZE = "small";
 const ACTIVE_ICON_COLOR = "primary";
 const INACTIVE_ICON_COLOR = "inherit";
 
-
-
 const HomeItem = (props) => {
   const PATH = "/";
-  const {currentPath} = props;
+  const { currentPath, onNavigate } = props;
 
   return (
-    <MenuItem>
-      <IconButton size={ICON_SIZE} color={currentPath === PATH?ACTIVE_ICON_COLOR:INACTIVE_ICON_COLOR}>
+    <MenuItem onClick={() => onNavigate(PATH)}>
+      <IconButton
+        size={ICON_SIZE}
+        color={currentPath === PATH ? ACTIVE_ICON_COLOR : INACTIVE_ICON_COLOR}
+      >
         <HomeIcon></HomeIcon>
       </IconButton>
     </MenuItem>
@@ -26,12 +27,15 @@ const HomeItem = (props) => {
 };
 
 const MessageItem = (props) => {
-  const PATH = "message";
-  const {currentPath} = props;
+  const PATH = "/message";
+  const { currentPath, onNavigate } = props;
 
   return (
-    <MenuItem>
-      <IconButton size={ICON_SIZE} color={currentPath === PATH?ACTIVE_ICON_COLOR:INACTIVE_ICON_COLOR}>
+    <MenuItem onClick={() => onNavigate(PATH)}>
+      <IconButton
+        size={ICON_SIZE}
+        color={currentPath === PATH ? ACTIVE_ICON_COLOR : INACTIVE_ICON_COLOR}
+      >
         <Badge badgeContent={4} color="error"></Badge>
         <RocketLaunchOutlinedIcon></RocketLaunchOutlinedIcon>
       </IconButton>
@@ -40,12 +44,15 @@ const MessageItem = (props) => {
 };
 
 const ActivityItem = (props) => {
-  const PATH = "activity";
-  const {currentPath} = props;
+  const PATH = "/activity";
+  const { currentPath, onNavigate } = props;
 
   return (
-    <MenuItem>
-      <IconButton size={ICON_SIZE} color={currentPath === PATH?ACTIVE_ICON_COLOR:INACTIVE_ICON_COLOR}>
+    <MenuItem onClick={() => onNavigate(PATH)}>
+      <IconButton
+        size={ICON_SIZE}
+        color={currentPath === PATH ? ACTIVE_ICON_COLOR : INACTIVE_ICON_COLOR}
+      >
         <Badge badgeContent={1} color="error"></Badge>
         <StarIcon></StarIcon>
       </IconButton>
@@ -54,12 +61,15 @@ const ActivityItem = (props) => {
 };
 
 const ProfileItem = (props) => {
-  const PATH = "profile";
-  const {currentPath} = props;
+  const PATH = "/profile";
+  const { currentPath, onNavigate } = props;
 
   return (
-    <MenuItem>
-      <IconButton size={ICON_SIZE} color={currentPath === PATH?ACTIVE_ICON_COLOR:INACTIVE_ICON_COLOR}>
+    <MenuItem onClick={() => onNavigate(PATH)}>
+      <IconButton
+        size={ICON_SIZE}
+        color={currentPath === PATH ? ACTIVE_ICON_COLOR : INACTIVE_ICON_COLOR}
+      >
         <PersonIcon></PersonIcon>
       </IconButton>
     </MenuItem>
