@@ -5,43 +5,58 @@ import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import { Avatar, Grid, ImageList, ImageListItem } from "@mui/material";
 
-const itemData = [
-  {
-    img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQU2JRbbl3LBOm_an3eI5iplFhOoLESyBwUfmWDO49BS1EYuGUE",
-    title: "musk",
-  },
-  {
-    img: "https://veja.abril.com.br/wp-content/uploads/2022/06/GettyImages-1395062612.jpg.jpg?quality=70&strip=info&resize=850,567",
-    title: "musk",
-  },
-  {
-    img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
-    title: "musl",
-  },
-  {
-    img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
-    title: "musk",
-  },
-  {
-    img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
-    title: "musk",
-  },
-  {
-    img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
-    title: "musk",
-  },
-  {
-    img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
-    title: "musk",
-  },
-  {
-    img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
-    title: "musk",
-  },
-
-];
+const profile = {
+  userName: "musk",
+  followers: 10,
+  following: 10,
+  userImageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQU2JRbbl3LBOm_an3eI5iplFhOoLESyBwUfmWDO49BS1EYuGUE",
+  bio: "we all die alone",
+  feedImages: [
+    {
+      img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQU2JRbbl3LBOm_an3eI5iplFhOoLESyBwUfmWDO49BS1EYuGUE",
+      title: "musk",
+    },
+    {
+      img: "https://veja.abril.com.br/wp-content/uploads/2022/06/GettyImages-1395062612.jpg.jpg?quality=70&strip=info&resize=850,567",
+      title: "musk",
+    },
+    {
+      img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
+      title: "musl",
+    },
+    {
+      img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
+      title: "musk",
+    },
+    {
+      img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
+      title: "musk",
+    },
+    {
+      img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
+      title: "musk",
+    },
+    {
+      img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
+      title: "musk",
+    },
+    {
+      img: "https://static.poder360.com.br/2022/04/Elon_Musk-848x477.jpg",
+      title: "musk",
+    },
+  ],
+};
 
 const ProfilePage = () => {
+  const {
+    userName,
+    followers,
+    following,
+    bio,
+    feedImages = [],
+    userImageUrl = "",
+  } = profile;
+
   return (
     <div
       style={{
@@ -54,21 +69,24 @@ const ProfilePage = () => {
       <Card sx={{ display: "flex", width: 500, height: 250 }}>
         <Avatar
           sx={{ width: 100, height: 100, top: 75, marginLeft: 2 }}
-          src={
-            "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQU2JRbbl3LBOm_an3eI5iplFhOoLESyBwUfmWDO49BS1EYuGUE"
-          }
+          src={userImageUrl}
           //  sx={{ bgcolor:  "#465678" }}
           aria-label="img"
         ></Avatar>
 
-        <AboutUserCard></AboutUserCard>
+        <AboutUserCard
+          bio={bio}
+          userName={userName}
+          posts={feedImages.length}
+          followers={followers}
+          following={following}
+        ></AboutUserCard>
       </Card>
       <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
-        {itemData.map((item) => (
+        {feedImages.map((item) => (
           <ImageListItem key={item.img}>
             <img
               src={item.img}
-             // srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
             />
@@ -81,12 +99,18 @@ const ProfilePage = () => {
 
 export default ProfilePage;
 
-const AboutUserCard = () => {
+const AboutUserCard = ({
+  userName = "",
+  posts = 0,
+  followers = 0,
+  following = 0,
+  bio = "",
+}) => {
   return (
-    <Card sx={{ minWidth: 275, boxShadow: 0 }}>
+    <Card sx={{ minWidth: 400, boxShadow: 0 }}>
       <CardContent>
         <Typography variant="h5" component="div">
-          musk
+          {userName}
         </Typography>
 
         <Grid
@@ -97,22 +121,22 @@ const AboutUserCard = () => {
         >
           <Grid item xs={4}>
             <Typography variant="body1" component="div">
-              posts
+              {posts + " posts"}
             </Typography>
           </Grid>
           <Grid item xs={4}>
             <Typography variant="body1" component="div">
-              followers
+              {followers + " followers"}
             </Typography>
           </Grid>
           <Grid item xs={4}>
             <Typography variant="body1" component="div">
-              following
+              {following + " following"}
             </Typography>
           </Grid>
         </Grid>
         <Typography variant="body2" mt={5}>
-          i'm not eminem
+          {bio}
           <br />
         </Typography>
       </CardContent>
