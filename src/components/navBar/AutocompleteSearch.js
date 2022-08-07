@@ -1,5 +1,10 @@
 import * as React from "react";
-import { Autocomplete, TextField } from "@mui/material";
+import {
+  Autocomplete,
+  Avatar,
+  Box,
+  TextField,
+} from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
 
 const Search = styled("div")(({ theme }) => ({
@@ -26,15 +31,30 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   justifyContent: "center",
 }));
 const sugestion = [
-  { label: "elton Musk" },
-  { label: "bilu gato" },
-  { label: "Steve works" },
+  {
+    label: "musk",
+    imageUrl:
+      "https://veja.abril.com.br/wp-content/uploads/2022/06/GettyImages-1395062612.jpg.jpg?quality=70&strip=info&resize=850,567",
+  },
+  {
+    label: "bill",
+    imageUrl:
+      "https://classic.exame.com/wp-content/uploads/2020/08/gettyimages-625137408-e1490022536452.jpg?quality=70&strip=info&w=1024",
+  },
+  {
+    label: "steve",
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Steve_Jobs_Headshot_2010-CROP2.jpg/640px-Steve_Jobs_Headshot_2010-CROP2.jpg",
+  },
 ];
+
 export default function AutocompleteSearch() {
   const [searchText, setSearchText] = React.useState("");
+
   const onSearchProfile = (value) => {
     console.log(value);
   };
+
   return (
     <Search>
       <SearchIconWrapper></SearchIconWrapper>
@@ -45,6 +65,21 @@ export default function AutocompleteSearch() {
         sx={{ width: 300 }}
         onChange={(e, value) => onSearchProfile(value)}
         noOptionsText={searchText ? "no results found." : ""}
+        renderOption={(props, option) => (
+          <Box
+            component="li"
+            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+            {...props}
+          >
+            <Avatar
+              style={{ marginRight: 10 }}
+              src={option.imageUrl}
+              //  sx={{ bgcolor:  "#465678" }}
+              aria-label="img"
+            ></Avatar>
+            {option.label}
+          </Box>
+        )}
         renderInput={(params) => (
           <TextField
             {...params}
