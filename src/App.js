@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import NavBar from "./components/navBar/index";
 import StoriesPage from "./pages/stories/index";
+import ProfilePage from "./pages/profile";
 
 export default function App() {
   return (
@@ -19,7 +20,19 @@ export default function App() {
           }
         />
 
-        <Route path="/stories/:userName" element={<StoriesPage></StoriesPage>} />
+        <Route
+          path="/stories/:userName"
+          element={<StoriesPage></StoriesPage>}
+        />
+        <Route
+          path="/profile/:userName"
+          element={
+            <div>
+              <NavBar />
+              <ProfilePage />
+            </div>
+          }
+        />
 
         <Route path="*" element={<NavBar />} />
       </Routes>
