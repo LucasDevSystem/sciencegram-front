@@ -10,20 +10,22 @@ import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Input, TextField } from "@mui/material";
 
-export default function Feed({ feedData = [] }) {
+export default function Feed({ feedData = [], onNavigate }) {
   return (
     <div>
       {feedData.map((postData, index) => {
-        return <div key={index}><PostCard  postData={postData} /></div>;
+        return (
+          <div key={index}>
+            <PostCard postData={postData} onNavigate={onNavigate} />
+          </div>
+        );
       })}
     </div>
   );
 }
 
-const PostCard = ({ postData, key }) => {
+const PostCard = ({ postData, onNavigate }) => {
   const [expanded, setExpanded] = React.useState(false);
   const { userName, userImageUrl, images, description, comments, createdAt } =
     postData;
@@ -34,15 +36,11 @@ const PostCard = ({ postData, key }) => {
       <CardHeader
         avatar={
           <Avatar
+            onClick={() => onNavigate(userName)}
             src={userImageUrl}
             sx={{ bgcolor: red[500] }}
             aria-label="recipe"
           ></Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
         }
         title={userName}
         subheader={createdAt}
@@ -67,7 +65,7 @@ const PostCard = ({ postData, key }) => {
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          {comments.map(({ comment, userName },index) => {
+          {comments.map(({ comment, userName }, index) => {
             return (
               <div key={index}>
                 <Typography
@@ -87,9 +85,9 @@ const PostCard = ({ postData, key }) => {
           })}
         </CardContent>
       </Collapse>
-      <p onClick={(e) => setExpanded(!expanded)}>
+      <Typography   color="text.secondary" marginLeft={2} onClick={(e) => setExpanded(!expanded)}>
         {expanded ? "hide comments" : "show comments"}
-      </p>
+      </Typography>
     </Card>
   );
 };

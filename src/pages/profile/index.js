@@ -12,7 +12,7 @@ const profile = {
   following: 10,
   userImageUrl:
     "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQU2JRbbl3LBOm_an3eI5iplFhOoLESyBwUfmWDO49BS1EYuGUE",
-  bio: "we all die alone",
+  bio: "hi",
   feedImages: [
     {
       img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQU2JRbbl3LBOm_an3eI5iplFhOoLESyBwUfmWDO49BS1EYuGUE",
