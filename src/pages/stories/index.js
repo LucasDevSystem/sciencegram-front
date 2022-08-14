@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import Header from "./Header";
+import StorieHeader from "./StorieHeader";
 import { useParams } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 
-//adocument.body.style = "background:  #35425C;";
 
 const stories = {
   musk: {
@@ -84,12 +83,12 @@ export default function StoriesPage() {
         <CircularProgress />
       ) : (
         <Card sx={{ maxWidth: 800, width: 500 }}>
-          <Header
+          <StorieHeader
             handleBack={handleBack}
             handleNext={handleNext}
             currImgIndex={currentImgIndex}
             headerData={storiesData}
-          ></Header>
+         />
           <CardMedia
             component="img"
             height="600"

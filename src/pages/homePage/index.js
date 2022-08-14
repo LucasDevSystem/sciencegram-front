@@ -67,6 +67,7 @@ function HomePage() {
   };
   return (
     <div>
+      <Stories storiesData={storiesData}></Stories>
       <div
         style={{
           marginLeft: "auto",
@@ -74,17 +75,6 @@ function HomePage() {
           display: "flex",
           justifyContent: "center",
           marginTop: 5,
-        }}
-      >
-        <Stories storiesData={storiesData}></Stories>
-      </div>
-      <div
-        style={{
-          marginLeft: "auto",
-          marginRight: "auto",
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 10,
         }}
       >
         <Feed feedData={feedData} onNavigate={onNavigate}></Feed>

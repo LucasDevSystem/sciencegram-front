@@ -1,6 +1,4 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
 import MobileStepper from "@mui/material/MobileStepper";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
@@ -13,15 +11,17 @@ import LinearProgress from "@mui/material/LinearProgress";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 
-const Header = ({ headerData, handleBack, handleNext, currImgIndex }) => {
+const StorieHeader = ({ headerData, handleBack, handleNext, currImgIndex }) => {
   const [isStoped, setIsStoped] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
+
   const {
     userName = "",
     userImageUrl = "",
     storiesImagesUrl = [],
   } = headerData;
 
+  // timer for progress bar
   React.useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
@@ -98,4 +98,4 @@ const Header = ({ headerData, handleBack, handleNext, currImgIndex }) => {
   );
 };
 
-export default Header;
+export default StorieHeader;
