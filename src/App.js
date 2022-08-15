@@ -4,6 +4,7 @@ import HomePage from "./pages/home";
 import NavBar from "./components/navBar/index";
 import StoriesPage from "./pages/stories/index";
 import ProfilePage from "./pages/profile";
+import MessagesPage from "./pages/messages";
 
 export default function App() {
   return (
@@ -19,7 +20,6 @@ export default function App() {
             </div>
           }
         />
-
         <Route
           path="/stories/:userName"
           element={<StoriesPage></StoriesPage>}
@@ -33,7 +33,15 @@ export default function App() {
             </div>
           }
         />
-
+        <Route
+          path="/messages"
+          element={
+            <div>
+              <NavBar></NavBar>
+              <MessagesPage></MessagesPage>
+            </div>
+          }
+        />
         <Route path="*" element={<NavBar />} />
       </Routes>
     </Router>
