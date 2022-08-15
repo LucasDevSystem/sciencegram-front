@@ -11,7 +11,7 @@ export default function NavBar() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const onNavigate = (path) => {
+  const handleNavigate = (path) => {
     if (path === pathname) {
       return;
     }
@@ -38,18 +38,18 @@ export default function NavBar() {
 
           <AutocompleteSearch />
 
-          <HomeItem currentPath={pathname} onNavigate={onNavigate}></HomeItem>
+          <HomeItem currentPath={pathname} onNavigate={handleNavigate}></HomeItem>
           <MessageItem
             currentPath={pathname}
-            onNavigate={onNavigate}
+            onNavigate={handleNavigate}
           ></MessageItem>
           <ActivityItem
             currentPath={pathname}
-            onNavigate={onNavigate}
+            onNavigate={handleNavigate}
           ></ActivityItem>
           <ProfileItem
             currentPath={pathname}
-            onNavigate={onNavigate}
+            onNavigate={handleNavigate}
           ></ProfileItem>
         </Toolbar>
       </AppBar>

@@ -74,7 +74,6 @@ export default function AutocompleteSearch() {
             <Avatar
               style={{ marginRight: 10 }}
               src={option.imageUrl}
-              //  sx={{ bgcolor:  "#465678" }}
               aria-label="img"
             ></Avatar>
             {option.label}
