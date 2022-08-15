@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import Header from "./Header";
+import StorieHeader from "./StorieHeader";
 import { useParams } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
+import styles from "./styles";
 
-//adocument.body.style = "background:  #35425C;";
+const Storie = Card;
 
 const stories = {
   musk: {
@@ -21,7 +22,7 @@ const stories = {
   bill: {
     userName: "bill",
     userImageUrl:
-    "https://classic.exame.com/wp-content/uploads/2020/08/gettyimages-625137408-e1490022536452.jpg?quality=70&strip=info&w=1024",
+      "https://classic.exame.com/wp-content/uploads/2020/08/gettyimages-625137408-e1490022536452.jpg?quality=70&strip=info&w=1024",
     storiesImagesUrl: [
       "https://assets.reedpopcdn.com/scene-Iron-Man.webp/BROK/thumbnail/1600x900/format/jpg/quality/80/scene-Iron-Man.webp",
       "https://classic.exame.com/wp-content/uploads/2021/12/homem-aranha-3-1.jpg?quality=70&strip=info&w=1024",
@@ -32,7 +33,7 @@ const stories = {
   steve: {
     userName: "steve",
     userImageUrl:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Steve_Jobs_Headshot_2010-CROP2.jpg/640px-Steve_Jobs_Headshot_2010-CROP2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Steve_Jobs_Headshot_2010-CROP2.jpg/640px-Steve_Jobs_Headshot_2010-CROP2.jpg",
     storiesImagesUrl: [
       "https://assets.reedpopcdn.com/scene-Iron-Man.webp/BROK/thumbnail/1600x900/format/jpg/quality/80/scene-Iron-Man.webp",
       "https://classic.exame.com/wp-content/uploads/2021/12/homem-aranha-3-1.jpg?quality=70&strip=info&w=1024",
@@ -43,7 +44,7 @@ const stories = {
 };
 export default function StoriesPage() {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [storiesData, setStoriesData] = useState({});
   const { userName } = useParams();
 
@@ -57,12 +58,9 @@ export default function StoriesPage() {
 
   const handleNext = () => {
     const { storiesImagesUrl = [] } = storiesData;
+    const index = currentImgIndex + 1 === storiesImagesUrl.length ? 0 : +1;
 
-    if (currentImgIndex + 1 === storiesImagesUrl.length) {
-      setCurrentImgIndex(0);
-      return;
-    }
-    setCurrentImgIndex(currentImgIndex + 1);
+    setCurrentImgIndex(index);
   };
   const handleBack = () => {
     if (currentImgIndex === 0) {
@@ -72,24 +70,17 @@ export default function StoriesPage() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
+    <div style={styles.storieContainner}>
       {loading ? (
         <CircularProgress />
       ) : (
-        <Card sx={{ maxWidth: 800, width: 500 }}>
-          <Header
+        <Storie sx={{ maxWidth: 800, width: 500 }}>
+          <StorieHeader
             handleBack={handleBack}
             handleNext={handleNext}
             currImgIndex={currentImgIndex}
             headerData={storiesData}
-          ></Header>
+          />
           <CardMedia
             component="img"
             height="600"
@@ -100,7 +91,7 @@ export default function StoriesPage() {
             }
             alt="img"
           />
-        </Card>
+        </Storie>
       )}
     </div>
   );
