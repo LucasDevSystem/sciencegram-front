@@ -66,7 +66,6 @@ const StorieHeader = ({ headerData, handleBack, handleNext, currImgIndex }) => {
           </div>
         }
         title={userName}
-        //subheader={}
       />
 
       <MobileStepper
@@ -75,16 +74,16 @@ const StorieHeader = ({ headerData, handleBack, handleNext, currImgIndex }) => {
         position="static"
         activeStep={currImgIndex}
         nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            ///disabled={}
-          >
+          <Button size="small" onClick={handleNext}>
             <KeyboardArrowRight />
           </Button>
         }
         backButton={
-          <Button onClick={handleBack} size="small">
+          <Button
+            disabled={currImgIndex === 0}
+            onClick={handleBack}
+            size="small"
+          >
             <KeyboardArrowLeft />
           </Button>
         }

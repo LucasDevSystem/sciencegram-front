@@ -6,26 +6,24 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+
 const Post = Card;
 
 const PostCard = ({ postData, onNavigate }) => {
-  const { userName, userImageUrl, images, description, comments, createdAt } =
-    postData;
-    const headerData = [];
-  ///Header
-  ///midia
-  //actions
-  //comments
-  //input
-  const handleLike = () => {};
+  const { images, description, comments } = postData;
+  const headerData = extractHeaderData(postData);
+
+  const handleLike = () => {
+    console.log("like");
+  };
 
   return (
     <Post sx={{ maxWidth: 900, width: 500 }}>
-      <PostHeader headerData ={headerData}/>
+      <PostHeader headerData={headerData} onNavigate={onNavigate} />
       <PostMedia mediaUrl={images} />
       <PostActions onLike={handleLike} />
       <PostDescription description={description} />
@@ -36,18 +34,18 @@ const PostCard = ({ postData, onNavigate }) => {
 
 export default PostCard;
 
-const PostHeader=({userImageUrl,userName,title,createdAt,onNavigate})=>(
-    <CardHeader
+const PostHeader = ({ headerData, onNavigate }) => (
+  <CardHeader
     avatar={
       <Avatar
-        onClick={() => onNavigate(userName)}
-        src={userImageUrl}
+        onClick={() => onNavigate(headerData.userName)}
+        src={headerData.userImageUrl}
         sx={{ bgcolor: red[500] }}
         aria-label="recipe"
       ></Avatar>
     }
-    title={userName}
-    subheader={createdAt}
+    title={headerData.userName}
+    subheader={headerData.createdAt}
   />
 );
 
@@ -60,12 +58,15 @@ const PostMedia = ({ mediaUrl = [] }) => (
   />
 );
 
-const PostActions = ({}) => {
+const PostActions = ({ onLike }) => {
   const [isLiked, setIsLiked] = React.useState(false);
   return (
     <CardActions disableSpacing>
       <IconButton
-        onClick={(e) => setIsLiked(!isLiked)}
+        onClick={(e) => {
+          setIsLiked(!isLiked);
+          onLike(isLiked);
+        }}
         aria-label="add to favorites"
       >
         <FavoriteIcon style={{ color: isLiked ? "red" : "" }} />
@@ -119,3 +120,12 @@ const PostComments = ({ comments = [] }) => {
     </div>
   );
 };
+
+function extractHeaderData(data = {}) {
+  const { userImageUrl = "", userName = "", createdAt = "" } = data;
+  return {
+    userImageUrl,
+    userName,
+    createdAt,
+  };
+}

@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import Feed from "./Feed";
-import Stories from "./Stories";
+
+import FeedView from "./FeedView";
+import StoriesCard from "./StoriesCard";
+import styles from "./styles";
 const storiesData = [
   {
     imageUrl:
@@ -62,22 +64,20 @@ const feedData = [
 function HomePage() {
   const navigate = useNavigate();
 
-  const onNavigate = (user) => {
-    navigate("../profile/" + user);
+  const handleNavigate = (path, user) => {
+    navigate(`../${path}/${user}`);
   };
   return (
     <div>
-      <Stories storiesData={storiesData}></Stories>
-      <div
-        style={{
-          marginLeft: "auto",
-          marginRight: "auto",
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 5,
-        }}
-      >
-        <Feed feedData={feedData} onNavigate={onNavigate}></Feed>
+      <div style={styles.storiesContainner}>
+        <StoriesCard
+          storiesData={storiesData}
+          onNavigate={handleNavigate}
+        ></StoriesCard>
+      </div>
+
+      <div style={styles.feedContainner}>
+        <FeedView feedData={feedData} onNavigate={handleNavigate}></FeedView>
       </div>
     </div>
   );
