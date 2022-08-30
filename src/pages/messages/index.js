@@ -1,9 +1,10 @@
 import * as React from "react";
 
-import { Box, Card, CardHeader } from "@mui/material";
+import { Box } from "@mui/material";
 import { Container } from "@mui/system";
 import MessagesView from "./MessagesView";
-import RecentMessagesList from "./RecentMessagesList";
+import styles from "./styles";
+import InboxList from "./InboxList";
 
 const messagesData = [
   {
@@ -81,28 +82,11 @@ const MessagesPage = () => {
   return (
     <div>
       <Container fixed>
-        <Box
-          sx={{
-            width: "100%",
-            height: 650,
-            marginLeft: "auto",
-            marginRight: "auto",
-            display: "flex",
-            justifyContent: "center",
-            marginTop: 5,
-          }}
-        >
-          <Card sx={{ maxWidth: 700, width: "35%", float: "left" }}>
-            <CardHeader title="myself" />
-            <RecentMessagesList
-              onSelect={handleSelect}
-              recentMessages={messagesData}
-            />
-          </Card>
-          <Card sx={{ maxWidth: 700, width: "75%" }}>
-            <CardHeader title={activeMessage} />
+        <Box sx={styles.box}>
+          <InboxList onSelect={handleSelect} recentMessages={messagesData} />
+          <div style={styles.messageContainner}>
             <MessagesView messages={messages} />
-          </Card>
+          </div>
         </Box>
       </Container>
     </div>
