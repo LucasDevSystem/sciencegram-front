@@ -27,7 +27,7 @@ const HomeItem = (props) => {
 };
 
 const MessageItem = (props) => {
-  const PATH = "/message";
+  const PATH = "/messages";
   const { currentPath, onNavigate } = props;
 
   return (
