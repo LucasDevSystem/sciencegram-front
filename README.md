@@ -17,7 +17,7 @@
     Description 
 </h2>
 
-This web site was developed with the purpose to serve as a portfolio, where each line of code demonstrates my knowledge and experience. I hope you enjoy it : )
+This web site was developed with the purpose to improve my knowledge , where each line of code demonstrates my knowledge and experience. I hope you enjoy it : )
 
 - - - -
 <h2 align=center id="run">
